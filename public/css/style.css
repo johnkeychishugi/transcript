@@ -45,6 +45,10 @@ a:hover {
   margin-bottom: 15px;
 }
 
+.error p{
+  font-size: 20px;
+}
+
 /* Header */
 header {
   display: flex;
