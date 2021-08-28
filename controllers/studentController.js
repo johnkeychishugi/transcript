@@ -4,53 +4,99 @@ import student from "../models/student";
 
 const studentController = {
     getStudents: (req, res) => {
-        student.findAll({
-            include: [classe,degree_program],
-            order : [['id','DESC']]
-        }).then((students) => {
-            res.render('index', {
-                students: students
-            });
+        return getStudentsData(res);
+    },
+
+    createView: (req, res) => {
+        return createViewData(res);
+    },
+
+    store: (req, res) => {
+        let { name, ssn, number, phone_number, birthday, sex,
+            major_department, minor_department,
+            current_address, classe, degree_program } = req.body;
+
+        let errors = [];
+
+        student.findOne({
+            where: {
+                ssn: ssn
+            }
+        }).then((data) => {
+            if (!data) {
+                student.create({
+                    name,
+                    ssn,
+                    number,
+                    phone_number,
+                    birthday,
+                    sex,
+                    major_department,
+                    minor_department,
+                    current_address,
+                    class_id: classe,
+                    degree_program_id: degree_program
+                }).then((data1) => {
+                    return getStudentsData(res);
+                }).catch(error => console.log(error));
+            } else {
+                errors.push({ text: 'SSN already exist!!' });
+                return createViewData(res,errors,ssn);
+            }
         }).catch(error => console.log(error));
     },
-    createView: (req, res) =>{
-        res.render('student/create',{
-            classes: 'fff',
-            degree_programs: 'fff'
+
+    destroy: (req, res) => {
+       let studentId = parseInt(req.params.id);
+        let errors = [];
+       student.findOne({
+           where:{
+               id: studentId
+           }
+       }).then((data)=>{
+           if(data){
+               student.destroy({
+                   where:{
+                       id: studentId
+                   }
+               }).then((data1)=>{
+                 return getStudentsData(res);
+               }).catch(error =>console.log(error));
+           }else{
+            errors.push({ text: 'Student not exist!!' });
+            return getStudentsData(res,errors);
+           }
+       })
+    }
+}
+
+const getStudentsData = (res,errors=null) => {
+    student.findAll({
+        include: [classe, degree_program],
+        order: [['id', 'DESC']]
+    }).then((students) => {
+        res.render('index', {
+            students: students,
+            errors
         });
-    }, 
-    message: (req, res) => {
-        let id
-        if (messages.datas.length != 0) {
-            id = messages.datas[messages.datas.length - 1].id + 1;
-        } else {
-            id = 1;
+    }).catch(error => console.log(error));
+}
+
+const createViewData = (res,errors=null,errorData=null) =>{
+    classe.findAll().then((data) => {
+        if (data) {
+            degree_program.findAll().then((data1) => {
+                if (data1) {
+                    res.render('student/create', {
+                        classes: data,
+                        degree_programs: data1,
+                        errors,
+                        errorData,
+                    });
+                }
+            }).catch(error => console.log(error));
         }
-        const created_at = new Date().toDateString();
-        console.log(created_at);
-        const data = new Message.DataMessage(req.body, id, created_at);
-
-        messages.save(data).then(respons => {
-            messages.findAll().then(response => {
-                res.render('home', {
-                    messages: response,
-                    layout: 'landing'
-                });
-            });
-        });
-
-    },
-
-    messages: (req, res) => {
-        messages.findAll().then(response => {
-            res.render('home', {
-                messages: response,
-                layout: 'landing'
-            });
-        });
-    },
-
-
+    }).catch(error => console.log(error));
 }
 
 export default studentController;
