@@ -1,16 +1,30 @@
 <section id="gigs" class="container">
-  <h1>All Students</h1>
+  <h1>All Students {{ students.length }}</h1>
 
-  {{#each students}}
-  <div class="gig">
-    <h3>Student Name</h3>
-    <p>{{dataValues.name}}</p>
-    <div class="tech">
-      <small>Created at: <span>{{dataValues.created_at}}</span></small>
-    </div>
+  <div class="row">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">SSN</th>
+          <th scope="col">Created_at</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each students}}
+        <tr>
+          <th scope="row">{{incremented @index}}</th>
+          <td>{{ dataValues.name }}</td>
+          <td>{{ dataValues.ssn }}</td>
+          <td>{{formatDate dataValues.created_at }}</td>
+        </tr>
+        {{else}}
+        <p>No Message available</p>
+        {{/each}}
+      </tbody>
+    </table>
   </div>
-  {{else}}
-  <p>No Message available</p>
-  {{/each}}
+
 
 </section>
