@@ -1,8 +1,11 @@
+import classe from "../models/class";
+import degree_program from "../models/degree_program";
 import student from "../models/student";
 
 const studentController = {
     getStudents: (req, res) => {
         student.findAll({
+            include: [classe,degree_program],
             order : [['id','DESC']]
         }).then((students) => {
             res.render('index', {
