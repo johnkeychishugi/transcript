@@ -13,7 +13,12 @@ const studentController = {
             });
         }).catch(error => console.log(error));
     },
-
+    createView: (req, res) =>{
+        res.render('student/create',{
+            classes: 'fff',
+            degree_programs: 'fff'
+        });
+    }, 
     message: (req, res) => {
         let id
         if (messages.datas.length != 0) {
