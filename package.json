@@ -23,6 +23,13 @@
     "express": "^4.17.1",
     "express-cors": "0.0.3",
     "express-handlebars": "^3.0.2",
-    "handlebars": "^4.5.0"
+    "handlebars": "^4.5.0",
+    "moment": "^2.29.1",
+    "mysql2": "^2.2.5",
+    "pg": "^8.3.3",
+    "pg-hstore": "^2.3.3",
+    "randomstring": "^1.1.5",
+    "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0"
   }
 }
