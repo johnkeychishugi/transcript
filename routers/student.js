@@ -3,8 +3,7 @@ import studentController from '../controllers/studentController';
 
 const routers = express.Router();
 
-routers.get("/message",studentController.getStudents)
-        .get("/messages",studentController.messages)
+routers.get("/create",studentController.createView)
         .post("/message",studentController.message);
     
 export default routers
