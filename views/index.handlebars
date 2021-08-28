@@ -1,21 +1,16 @@
-<section id="add" class="container">
-  <div class="form-wrap">
-    <h1>Login</h1>
-    {{#each errors}}
-    <div class="error">
-      <p>{{text}}</p>
+<section id="gigs" class="container">
+  <h1>All Students</h1>
+
+  {{#each students}}
+  <div class="gig">
+    <h3>Student Name</h3>
+    <p>{{dataValues.name}}</p>
+    <div class="tech">
+      <small>Created at: <span>{{dataValues.created_at}}</span></small>
     </div>
-    {{/each}}
-    <form action="/login" method="POST">
-      <div class="input-group">
-        <label for="email">Email</label>
-        <input type="text" name="email" id="email" class="input-box">
-      </div>
-      <div class="input-group">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" class="input-box">
-      </div>
-      <input type="submit" value="Connexion" class="btn btn-reverse">
-    </form>
   </div>
+  {{else}}
+  <p>No Message available</p>
+  {{/each}}
+
 </section>
