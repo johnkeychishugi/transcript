@@ -19,8 +19,6 @@ app.use(express.static(path.join(__dirname,'public')));
 //initialize Routers
 app.use(routers);
 app.get('/',(req,res)=> res.render('index'));
-//Body Parser
-app.use(bodyParser.urlencoded({ extended: false}));
 
 const PORT = process.env.PORT || 5000;
 
