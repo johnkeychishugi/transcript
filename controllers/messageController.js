@@ -1,8 +1,3 @@
-import Message from '../models/message';
-
-const messages =  Message.Messages;
-
-
 const messageController = {
     messageShow : (req,res) =>{
         res.render('message',{ layout:'landing' });
