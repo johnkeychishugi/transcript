@@ -1,0 +1,30 @@
+{
+  "name": "test1",
+  "version": "1.0.0",
+  "description": "actualite",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node index.js",
+    "start-dev": "nodemon index.js --exec babel-node"
+  },
+  "author": "John Chishugi",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/node": "^7.8.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/register": "^7.8.3",
+    "babel-watch": "^7.0.0",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-cors": "0.0.3",
+    "express-handlebars": "^3.0.2",
+    "handlebars": "^4.5.0",
+    "jsonwebtoken": "^8.5.1"
+  }
+}

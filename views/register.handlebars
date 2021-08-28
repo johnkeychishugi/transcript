@@ -1,0 +1,29 @@
+<section id="add" class="container">
+  <div class="form-wrap">
+    <h1>Registration</h1>
+    {{#each errors}}
+    <div class="error">
+      <p>{{text}}</p>
+    </div>
+    {{/each}}
+    <form action="/register" method="POST">
+      <div class="input-group">
+        <label for="firstname">First Name</label>
+        <input type="text" name="firstname" id="firstname" class="input-box" value="{{firstname}}" required="">
+      </div>
+      <div class="input-group">
+        <label for="firtsname">Last Name</label>
+        <input type="text" name="lastname" id="lastname" class="input-box" value="{{lastname}}" required="">
+      </div>
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="name" class="input-box" value="{{email}}" required="">
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" class="input-box" required="">
+      </div>
+      <input type="submit" value="Create" class="btn btn-reverse">
+    </form>
+  </div>
+</section>
