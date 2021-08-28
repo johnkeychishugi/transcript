@@ -4,6 +4,8 @@ import bodyParser from "body-parser";
 import database from './config/database';
 import path from "path";
 import routers from './routers/';
+import studentController from "./controllers/studentController";
+
 
 const app = express();
 
@@ -18,7 +20,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //initialize Routers
 app.use(routers);
-app.get('/', (req, res) => res.render('index'));
+
+app.get('/',studentController.getStudents);
 
 const PORT = process.env.PORT || 5000;
 
