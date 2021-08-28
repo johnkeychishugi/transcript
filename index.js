@@ -5,14 +5,19 @@ import database from './config/database';
 import path from "path";
 import routers from './routers/';
 import studentController from "./controllers/studentController";
-
+import helpers from './helpers/helpers'
 
 const app = express();
 
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+const hbs = exphbs.create({
+  defaultLayout: 'main',
+  helpers: helpers
+});
+
+app.engine('handlebars',hbs.engine);
 app.set('view engine', 'handlebars');
 
-//Body Parser
+//Body Parser 
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //set static folder
@@ -21,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //initialize Routers
 app.use(routers);
 
-app.get('/',studentController.getStudents);
+app.get('/', studentController.getStudents);
 
 const PORT = process.env.PORT || 5000;
 
