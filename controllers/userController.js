@@ -1,12 +1,5 @@
-import User from '../models/user';
 import dotenv from 'dotenv';
-import Message from '../models/message';
 
-const messages =  Message.Messages;
-
-dotenv.config();
-
-const users =  User.Users;
 
 const userController = {
      loginShow : (req,res) =>{
