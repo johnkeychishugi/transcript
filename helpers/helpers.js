@@ -1,14 +1,14 @@
-import student from "../models/student";
+import dateFormat from 'dateformat';
 
-const helper = {
-    getStudents: () => {
-        let students;
-        student.findAll().then((data) => {
-            students = data;
-        }).catch(error => console.log(error)); 
+const helpers = {
+    incremented: (value) =>{
+        value++;
+        return value;
+    },
 
-        return students
+    formatDate: (date) =>{
+        return dateFormat(date, "yyyy-mm-dd HH:MM");
     }
 }
 
-export default helper;
+export default helpers;
