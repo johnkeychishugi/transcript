@@ -1,0 +1,85 @@
+<section id="add" class="container">
+    <div class="form-wrap">
+        <h1>Add student</h1>
+        {{#each errors}}
+        <div class="error">
+            <p><span class="badge badge-pill badge-danger">{{ text }}</span></p>
+        </div>
+        {{/each}}
+        <div>
+            <form action="/students/store" method="POST">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Name</label>
+                        <input type="text" class="form-control" name="name" id="inputEmail4" placeholder="Full Name"
+                            required="required">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="input">SSN</label>
+                        <input type="text" class="form-control" name="ssn" id="input" placeholder="SSN"
+                            required="required">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Number</label>
+                        <input type="number" class="form-control" name="number" id="inputEmail4" placeholder="Number"
+                            required="required">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="input">Phone Number</label>
+                        <input type="number" class="form-control" name="phone_number" id="input"
+                            placeholder="Phone Number" required="required">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Birthday</label>
+                        <input type="date" class="form-control" name="birthday" id="inputEmail4" placeholder="Birthday"
+                            required="required">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="input">Sex</label>
+                        <select id="inputState" name="sex" class="form-control" required="required">
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Major Department</label>
+                        <input type="text" class="form-control" name="major_department" id="inputEmail4"
+                            placeholder="Major Department" required="required">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="input">Minor Department</label>
+                        <input type="text" class="form-control" name="minor_department" id="input"
+                            placeholder="Minor Department" required="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Current Address</label>
+                    <input type="text" class="form-control" name="current_address" id="inputAddress"
+                        placeholder="1234 Main St" required="required">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">Class</label>
+                        <select id="inputState" name="classe" class="form-control" required="required">
+                            <option selected>Select a class</option>
+                            {{#each classes}}
+                            <option value="{{ dataValues.id }}">{{ dataValues.name }}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputState">Degree program</label>
+                        <select id="inputState" name="degree_program" class="form-control" required="required">
+                            <option selected>Select a degree program</option>
+                            {{#each degree_programs}}
+                            <option value="{{ dataValues.id }}">{{ dataValues.name }}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</section>
+

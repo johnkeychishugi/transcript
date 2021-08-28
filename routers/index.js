@@ -1,12 +1,9 @@
 import express from 'express';
-import userRouter from './users';
-import messageRouter from './messages';
-
+import studentRouter from './student';
 
 const router = express.Router();
 
-router.use(userRouter);
-router.use(messageRouter);
+router.use('/students',studentRouter);
 
 
 export default router;

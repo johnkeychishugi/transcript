@@ -1,21 +1,74 @@
-<section id="add" class="container">
-  <div class="form-wrap">
-    <h1>Login</h1>
-    {{#each errors}}
-    <div class="error">
-      <p>{{text}}</p>
-    </div>
-    {{/each}}
-    <form action="/login" method="POST">
-      <div class="input-group">
-        <label for="email">Email</label>
-        <input type="text" name="email" id="email" class="input-box">
-      </div>
-      <div class="input-group">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" class="input-box">
-      </div>
-      <input type="submit" value="Connexion" class="btn btn-reverse">
-    </form>
+<section id="gigs" class="container">
+  <h1>All Students {{ students.length }}</h1>
+  {{#each errors}}
+  <div class="error">
+    <p><span class="badge badge-pill badge-danger">{{ text }}</span></p>
+  </div>
+  {{/each}}
+  <div class="row">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Class</th>
+          <th scope="col">Degree Program</th>
+          <th scope="col">SSN</th>
+          <th scope="col">Number</th>
+          <th scope="col">Phone number</th>
+          <th scope="col">Birthday</th>
+          <th scope="col">Sex</th>
+          <th scope="col">Current Address</th>
+          <th scope="col">Created at</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each students}}
+        <tr>
+          <th scope="row">{{incremented @index}}</th>
+          <td>{{ dataValues.name }}</td>
+          <td>{{ dataValues.class.dataValues.name }}</td>
+          <td>{{ dataValues.degree_program.dataValues.name }}</td>
+          <td>{{ dataValues.ssn }}</td>
+          <td>{{ dataValues.number }}</td>
+          <td>{{ dataValues.phone_number }}</td>
+          <td>{{ dataValues.birthday }}</td>
+          <td>{{ dataValues.sex }}</td>
+          <td>{{ dataValues.current_address }}</td>
+          <td>{{formatDate dataValues.created_at }}</td>
+          <td>
+            <a href="#" class="btn btn-info"><i class="fa fa-eye"></i></a>
+            <a onclick="deleteStudent({{ dataValues.id }})" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+            <form id="delete-form-{{ dataValues.id }}" action="students/destroy/{{ dataValues.id }}" method="POST"
+              style="display: none;">
+            </form>
+          </td>
+        </tr>
+        {{else}}
+        <p>No student available</p>
+        {{/each}}
+      </tbody>
+    </table>
   </div>
 </section>
+
+<script>
+  function deleteStudent(id) {
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this imaginary file!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          event.preventDefault();
+          document.getElementById('delete-form-' + id).submit();
+        } else {
+          swal("Your imaginary file is safe!");
+        }
+      });
+  }
+</script>

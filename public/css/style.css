@@ -33,7 +33,7 @@ a:hover {
 }
 
 .container {
-  max-width: 960px;
+  max-width: 1800px;
   padding: 1rem 4rem;
   margin: auto;
   overflow: hidden;
@@ -43,6 +43,10 @@ a:hover {
   padding: 5px;
   border: #777 dotted 1px;
   margin-bottom: 15px;
+}
+
+.error p{
+  font-size: 20px;
 }
 
 /* Header */

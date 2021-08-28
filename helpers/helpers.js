@@ -1,17 +1,14 @@
-import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
+import dateFormat from 'dateformat';
 
-dotenv.config();
-const Helper = {
-  checkToken(token) {
-      tokenText = token;
-
-      return tokenText
+const helpers = {
+    incremented: (value) =>{
+        value++;
+        return value;
     },
-    getToken() {
-        
-        tokenText = token;
-      }
-};
 
-export default Helper;
+    formatDate: (date) =>{
+        return dateFormat(date, "yyyy-mm-dd HH:MM");
+    }
+}
+
+export default helpers;
