@@ -2,12 +2,12 @@ import course from '../models/course';
 import department from '../models/department';
 
 const courseController = {
-    getAll: (req,res) =>{
+    getAll: (req, res) => {
         course.findAll({
-            order: [['id','DESC']],
+            order: [['id', 'DESC']],
             include: [department]
-        }).then((data)=>{
-            res.render('course/index',{
+        }).then((data) => {
+            res.render('course/index', {
                 courses: data
             });
         }).catch(error => console.log(error));
