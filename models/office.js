@@ -2,7 +2,11 @@ import Sequelize from 'sequelize';
 import db from '../config/database';
 
 const office = db.define('offices', {
-    name: {
+    number: {
+        type: Sequelize.NUMBER,
+        allowNull: false
+    },
+    phone_number: {
         type: Sequelize.TEXT,
         allowNull: false
     },
