@@ -32,4 +32,5 @@ department.belongsTo(office, {
 
 
 
+
 export default department;
