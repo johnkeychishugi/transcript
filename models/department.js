@@ -1,5 +1,6 @@
 import Sequelize from 'sequelize';
 import db from '../config/database';
+import office from './office';
 
 const department = db.define('departments', {
     office_id: {
@@ -22,6 +23,13 @@ const department = db.define('departments', {
     timestamps: false,
     freezeTableName: true
 });
+
+department.belongsTo(office, {
+    foreignKey: 'office_id',
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE"
+});
+
 
 
 export default department;
