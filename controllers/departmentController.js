@@ -2,12 +2,12 @@ import department from '../models/department';
 import office from '../models/office';
 
 const departmentController = {
-    getAll: (req,res) =>{
+    getAll: (req, res) => {
         department.findAll({
-            order: [['id','DESC']],
+            order: [['id', 'DESC']],
             include: [office]
-        }).then((data)=>{
-            res.render('department/index',{
+        }).then((data) => {
+            res.render('department/index', {
                 departments: data
             });
         }).catch(error => console.log(error));
