@@ -36,9 +36,9 @@
           <td>{{ dataValues.birthday }}</td>
           <td>{{ dataValues.sex }}</td>
           <td>{{ dataValues.current_address }}</td>
-          <td>{{formatDate dataValues.created_at }}</td>
+          <td>{{ formatDate dataValues.created_at }}</td>
           <td>
-            <a href="#" class="btn btn-info"><i class="fa fa-eye"></i></a>
+            <a href="/students/show/{{ dataValues.id }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
             <a onclick="deleteStudent({{ dataValues.id }})" class="btn btn-danger"><i class="fa fa-trash"></i></a>
             <form id="delete-form-{{ dataValues.id }}" action="students/destroy/{{ dataValues.id }}" method="POST"
               style="display: none;">
@@ -57,7 +57,7 @@
   function deleteStudent(id) {
     swal({
       title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this imaginary file!",
+      text: "Once deleted, you will not be able to recover this information!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -67,7 +67,7 @@
           event.preventDefault();
           document.getElementById('delete-form-' + id).submit();
         } else {
-          swal("Your imaginary file is safe!");
+          swal("Your informattion is safe!");
         }
       });
   }

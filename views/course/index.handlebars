@@ -1,0 +1,40 @@
+<section id="gigs" class="container">
+  <h1>All courses {{ courses.length }}</h1>
+  {{#each errors}}
+  <div class="error">
+    <p><span class="badge badge-pill badge-danger">{{ text }}</span></p>
+  </div>
+  {{/each}}
+  <div class="row">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Department</th>
+          <th scope="col">Description</th>
+          <th scope="col">Number</th>
+          <th scope="col">Number semester Hours</th>
+          <th scope="col">Level</th>
+          <th scope="col">Created at</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each courses}}
+        <tr>
+          <th scope="row">{{incremented @index}}</th>
+          <td>{{ dataValues.name }}</td>
+          <td>{{ dataValues.department.dataValues.name }}</td>
+          <td>{{ dataValues.description }}</td>
+          <td>{{ dataValues.number }}</td>
+          <td>{{ dataValues.number_semester_hours }}</td>
+          <td>{{ dataValues.level }}</td>
+          <td>{{ formatDate dataValues.created_at }}</td>
+        </tr>
+        {{else}}
+        <p>No department available</p>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>

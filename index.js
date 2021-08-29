@@ -14,7 +14,7 @@ const hbs = exphbs.create({
   helpers: helpers
 });
 
-app.engine('handlebars',hbs.engine);
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 //Body Parser 

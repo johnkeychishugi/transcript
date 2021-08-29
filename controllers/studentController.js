@@ -37,40 +37,55 @@ const studentController = {
                     class_id: classe,
                     degree_program_id: degree_program
                 }).then((data1) => {
-                    return getStudentsData(res);
+                    res.redirect('/');
                 }).catch(error => console.log(error));
             } else {
                 errors.push({ text: 'SSN already exist!!' });
-                return createViewData(res,errors,ssn);
+                return createViewData(res, errors, ssn);
             }
         }).catch(error => console.log(error));
     },
 
     destroy: (req, res) => {
-       let studentId = parseInt(req.params.id);
+        let studentId = parseInt(req.params.id);
         let errors = [];
-       student.findOne({
-           where:{
-               id: studentId
-           }
-       }).then((data)=>{
-           if(data){
-               student.destroy({
-                   where:{
-                       id: studentId
-                   }
-               }).then((data1)=>{
-                 return getStudentsData(res);
-               }).catch(error =>console.log(error));
-           }else{
-            errors.push({ text: 'Student not exist!!' });
-            return getStudentsData(res,errors);
-           }
-       })
+        student.findOne({
+            where: {
+                id: studentId
+            }
+        }).then((data) => {
+            if (data) {
+                student.destroy({
+                    where: {
+                        id: studentId
+                    }
+                }).then((data1) => {
+                    res.redirect('/');
+                }).catch(error => console.log(error));
+            } else {
+                errors.push({ text: 'Student not exist!!' });
+                return getStudentsData(res, errors);
+            }
+        })
+    },
+
+    show: (req, res) => {
+        let studentId = parseInt(req.params.id);
+
+        student.findOne({
+            where: {
+                id: studentId
+            },
+            include: [classe, degree_program],
+        }).then((student) => {
+            res.render('student/show', {
+                student: student,
+            });
+        }).catch(error => console.log(error));
     }
 }
 
-const getStudentsData = (res,errors=null) => {
+const getStudentsData = (res, errors = null) => {
     student.findAll({
         include: [classe, degree_program],
         order: [['id', 'DESC']]
@@ -82,7 +97,7 @@ const getStudentsData = (res,errors=null) => {
     }).catch(error => console.log(error));
 }
 
-const createViewData = (res,errors=null,errorData=null) =>{
+const createViewData = (res, errors = null, errorData = null) => {
     classe.findAll().then((data) => {
         if (data) {
             degree_program.findAll().then((data1) => {
