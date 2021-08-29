@@ -1,7 +1,7 @@
 import department from '../models/department';
 import office from '../models/office';
 
-const sectionController = {
+const departmentController = {
     getAll: (req,res) =>{
         department.findAll({
             order: [['id','DESC']],
@@ -14,4 +14,4 @@ const sectionController = {
     }
 };
 
-export default sectionController;
+export default departmentController;
