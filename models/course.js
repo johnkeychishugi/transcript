@@ -1,5 +1,6 @@
 import Sequelize from 'sequelize';
 import db from '../config/database';
+import department from './department';
 
 const course = db.define('courses', {
     department_id: {
@@ -33,6 +34,12 @@ const course = db.define('courses', {
 }, {
     timestamps: false,
     freezeTableName: true
+});
+
+course.belongsTo(department, {
+    foreignKey: 'department_id',
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE"
 });
 
 
