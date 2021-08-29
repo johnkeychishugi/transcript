@@ -2,12 +2,12 @@ import instructor from '../models/instructor';
 import section from '../models/section';
 
 const sectionController = {
-    getAll: (req,res) =>{
+    getAll: (req, res) => {
         section.findAll({
-            order: [['id','DESC']],
+            order: [['id', 'DESC']],
             include: [instructor]
-        }).then((data)=>{
-            res.render('section/index',{
+        }).then((data) => {
+            res.render('section/index', {
                 sections: data
             });
         }).catch(error => console.log(error));
