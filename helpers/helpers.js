@@ -1,16 +1,16 @@
 import dateFormat from 'dateformat';
 
 const helpers = {
-    incremented: (value) =>{
+    incremented: (value) => {
         value++;
         return value;
     },
 
-    formatDate: (date) =>{
+    formatDate: (date) => {
         return dateFormat(date, "yyyy-mm-dd HH:MM");
     },
 
-    avatarImage: (sex) =>{
+    avatarImage: (sex) => {
         return sex == 'F' ? '/img/female.png' : '/img/male.png';
     }
 }
