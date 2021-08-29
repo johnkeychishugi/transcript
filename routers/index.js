@@ -6,9 +6,9 @@ import courseRouter from './course';
 
 const router = express.Router();
 
-router.use('/students',studentRouter)
-      .use('/sections',sectionRouter)
-      .use('/departments',departmentRouter)
-      .use('/courses',courseRouter);
+router.use('/students', studentRouter)
+      .use('/sections', sectionRouter)
+      .use('/departments', departmentRouter)
+      .use('/courses', courseRouter);
 
 export default router;
