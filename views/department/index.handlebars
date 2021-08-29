@@ -1,0 +1,36 @@
+<section id="gigs" class="container">
+  <h1>All departments {{ departments.length }}</h1>
+  {{#each errors}}
+  <div class="error">
+    <p><span class="badge badge-pill badge-danger">{{ text }}</span></p>
+  </div>
+  {{/each}}
+  <div class="row">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Code</th>
+          <th scope="col">Office Number</th>
+          <th scope="col">Office Phone Number</th>
+          <th scope="col">Created at</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each departments}}
+        <tr>
+          <th scope="row">{{incremented @index}}</th>
+          <td>{{ dataValues.name }}</td>
+          <td>{{ dataValues.code }}</td>
+          <td>{{ dataValues.office.dataValues.number }}</td>
+          <td>{{ dataValues.office.dataValues.phone_number }}</td>
+          <td>{{ formatDate dataValues.created_at }}</td>
+        </tr>
+        {{else}}
+        <p>No department available</p>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>
