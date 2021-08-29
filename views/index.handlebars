@@ -36,9 +36,9 @@
           <td>{{ dataValues.birthday }}</td>
           <td>{{ dataValues.sex }}</td>
           <td>{{ dataValues.current_address }}</td>
-          <td>{{formatDate dataValues.created_at }}</td>
+          <td>{{ formatDate dataValues.created_at }}</td>
           <td>
-            <a href="#" class="btn btn-info"><i class="fa fa-eye"></i></a>
+            <a href="/students/show/{{ dataValues.id }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
             <a onclick="deleteStudent({{ dataValues.id }})" class="btn btn-danger"><i class="fa fa-trash"></i></a>
             <form id="delete-form-{{ dataValues.id }}" action="students/destroy/{{ dataValues.id }}" method="POST"
               style="display: none;">
