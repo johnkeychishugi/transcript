@@ -8,6 +8,10 @@ const helpers = {
 
     formatDate: (date) =>{
         return dateFormat(date, "yyyy-mm-dd HH:MM");
+    },
+
+    avatarImage: (sex) =>{
+        return sex == 'F' ? '/img/female.png' : '/img/male.png';
     }
 }
 
