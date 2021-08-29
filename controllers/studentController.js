@@ -67,6 +67,21 @@ const studentController = {
                 return getStudentsData(res, errors);
             }
         })
+    },
+
+    show: (req, res) => {
+        let studentId = parseInt(req.params.id);
+        
+        student.findOne({
+             where:{
+                id: studentId
+             },
+            include: [classe, degree_program],
+        }).then((student) => {
+            res.render('student/show', {
+                student: student,
+            });
+        }).catch(error => console.log(error));
     }
 }
 
