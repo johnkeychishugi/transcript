@@ -71,11 +71,11 @@ const studentController = {
 
     show: (req, res) => {
         let studentId = parseInt(req.params.id);
-        
+
         student.findOne({
-             where:{
+            where: {
                 id: studentId
-             },
+            },
             include: [classe, degree_program],
         }).then((student) => {
             res.render('student/show', {
