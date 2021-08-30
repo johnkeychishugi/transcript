@@ -1,6 +1,7 @@
 import Sequelize from 'sequelize';
 import db from '../config/database';
 import instructor from './instructor';
+import course from './course';
 
 const section = db.define('sections', {
     instructor_id: {
@@ -41,6 +42,18 @@ section.belongsTo(instructor, {
     onDelete: "CASCADE",
     onUpdate: "CASCADE"
 });
+
+section.belongsToMany(course, {
+    through: "courses_sections",
+    as: "courses",
+    foreignKey: "section_id",
+  });
+  
+  course.belongsToMany(section, {
+    through: "courses_sections",
+    as: "sections",
+    foreignKey: "course_id",
+  });
 
 
 export default section;
