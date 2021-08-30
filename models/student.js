@@ -2,6 +2,7 @@ import Sequelize from 'sequelize';
 import db from '../config/database';
 import classe from './class';
 import degree_program from './degree_program';
+import grade_report from './grade_report';
 
 const student = db.define('students', {
     class_id: {
@@ -65,6 +66,18 @@ student.belongsTo(classe, {
 
 student.belongsTo(degree_program, {
     foreignKey: 'degree_program_id',
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE"
+});
+
+student.hasOne(grade_report, {
+    foreignKey: 'student_id',
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE"
+});
+
+grade_report.belongsTo(student, {
+    foreignKey: 'student_id',
     onDelete: "CASCADE",
     onUpdate: "CASCADE"
 });
