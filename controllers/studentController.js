@@ -79,13 +79,13 @@ const studentController = {
             where: {
                 id: studentId
             },
-            include:[classe, degree_program,
+            include: [classe, degree_program,
                 {
-                    model : grade_report,
-                    include : [
+                    model: grade_report,
+                    include: [
                         {
-                            model : section,
-                            include : [
+                            model: section,
+                            include: [
                                 {
                                     model: course,
                                     as: 'courses'
