@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-work">
-                    <h5><i class="fa fa-arrows"></i> Section</h5>
+                    <h5><i class="fa fa-bookmark"></i> Section</h5>
                     <a href="">Semester: {{ student.dataValues.grade_report.dataValues.section.dataValues.semester}}</a><br />
                     <a href="">Year: {{ student.dataValues.grade_report.dataValues.section.dataValues.year}}</a><br />
                     <a href="">Number: {{ student.dataValues.grade_report.dataValues.section.dataValues.number}}</a><br />
@@ -39,7 +39,7 @@
                     <a href="">Building: {{ student.dataValues.grade_report.dataValues.section.dataValues.building}}</a><br />  
                 </div>
                  <div class="profile-work">
-                    <h5><i class="fa fa-arrows"></i> Courses</h5>
+                    <h5><i class="fa fa-book"></i> Courses</h5>
                     {{#each student.dataValues.grade_report.dataValues.section.dataValues.courses }}
                        <a href="">{{ dataValues.name}}</a><br />
                      {{/each}}
