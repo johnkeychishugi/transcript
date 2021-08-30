@@ -1,5 +1,8 @@
 import classe from "../models/class";
+import course from "../models/course";
 import degree_program from "../models/degree_program";
+import grade_report from "../models/grade_report";
+import section from "../models/section";
 import student from "../models/student";
 
 const studentController = {
@@ -76,7 +79,22 @@ const studentController = {
             where: {
                 id: studentId
             },
-            include: [classe, degree_program],
+            include:[classe, degree_program,
+                {
+                    model : grade_report,
+                    include : [
+                        {
+                            model : section,
+                            include : [
+                                {
+                                    model: course,
+                                    as: 'courses'
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
         }).then((student) => {
             res.render('student/show', {
                 student: student,
